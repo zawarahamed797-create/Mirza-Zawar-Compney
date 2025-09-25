@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mirza Zawar Compney</title>
+  <meta name="description" content="All services." />
+
+  <style>
+    /* ======= Basic Reset & Fonts ======= */
+    :root{
+      --accent:#0b7a53;
+      --dark:#0d1b2a;
+      --muted:#6b7280;
+      --card:#ffffff;
+      --shadow: 0 6px 18px rgba(13,27,42,0.08);
+      --glass: rgba(255,255,255,0.85);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:var(--dark); background:#f6f7fb;}
+    a{color:inherit;text-decoration:none}
+
+    /* ======= Top header with logo + nav ======= */
+    .header{
+      width:100%;
+      background:linear-gradient(180deg, #fff, #fbfdff);
+      position:sticky;
+      top:0;
+      z-index:40;
+      border-bottom:1px solid #eef2f6;
+      backdrop-filter: blur(6px);
+    }
+     .container{flex-direction:column;align-items:flex-start;width:100%}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:100px;width:100px;object-fit:cover;border-radius:8px;box-shadow:var(--shadow)}
+    .brand h1{font-size:18px;line-height:1;color:var(--dark)}
+    nav{flex:1;display:flex;justify-content:center}
+    .nav-links{display:flex;gap:18px}
+    .nav-links a{padding:8px 12px;border-radius:8px;color:var(--muted);font-weight:600}
+    .nav-links a:hover{background:#eef7f2;color:var(--accent)}
+
+    /* ======= Hero / Slider ======= */
+    .hero{max-width:1100px;margin:18px auto 30px;padding:0 20px}
+    .slider{position:relative;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+    .slides{display:flex;transition:transform .6s ease}
+    .slide{min-width:100%;height:320px;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center;position:relative;color:white}
+    .slide .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.45));}
+    .slide-content{position:relative;z-index:2;padding:24px;max-width:760px}
+    .slide h2{font-size:28px;margin-bottom:8px}
+    .slide p{opacity:0.95}
+    .slider-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;padding:8px;border-radius:8px;cursor:pointer;box-shadow:var(--shadow)}
+    .slider-btn.left{left:12px}
+    .slider-btn.right{right:12px}
+    .dots{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;display:flex;gap:8px;z-index:5}
+    .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.6);cursor:pointer}
+    .dot.active{background:var(--accent);box-shadow:0 3px 8px rgba(11,122,83,0.28)}
+
+    /* ======= Services Catalog ======= */
+    .section{max-width:1100px;margin:26px auto;padding:0 20px}
+    .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+    .card img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+    .card h3{font-size:16px}
+    .price{font-weight:800;color:var(--accent)}
+    .card .actions{margin-top:auto;display:flex;gap:10px}
+    .btn{padding:8px 12px;border-radius:8px;font-weight:700;border:0;cursor:pointer}
+    .btn.primary{background:var(--accent);color:white}
+    .btn.ghost{background:#f3f6f7;color:var(--dark)}
+
+    /* ======= About + Contact ======= */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+    .about, .contact{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow)}
+    .contact form{display:flex;flex-direction:column;gap:10px}
+    input, textarea{padding:10px;border-radius:8px;border:1px solid #e6eef3}
+    textarea{min-height:120px;resize:vertical}
+
+    /* ======= Floating WhatsApp Order Button ======= */
+    .whatsapp{
+      position:fixed;right:18px;bottom:18px;background:linear-gradient(180deg,#10b981,#059669);color:white;padding:12px 14px;border-radius:999px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 30px rgba(5,150,105,0.23);z-index:60
+    }
+    .whatsapp img{height:20px;width:20px}
+
+    /* ======= Footer ======= */
+    footer{max-width:1100px;margin:28px auto;padding:20px;color:var(--muted);text-align:center}
+
+    /* ======= Responsive ======= */
+    @media (max-width:900px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .two-col{grid-template-columns:1fr}
+      .slide{height:260px}
+    }
+  @media (max-width:768px){  /* Tablet + Mobile */
+  .grid{grid-template-columns:1fr}
+  .two-col{grid-template-columns:1fr}
+  .slide{height:200px}
+  .container{flex-direction:column;align-items:flex-start}
+  .nav-links{flex-wrap:wrap;gap:10px}
+}
+
+@media (max-width:520px){  /* Sirf Mobile */
+  .nav-links{display:none}
+  .brand{flex-direction:column;align-items:flex-start}
+  .brand img{height:36px;width:100%}
+  .brand h1{font-size:14px}
+  .slide{height:160px}
+  .slide h2{font-size:18px}
+  .slide p{font-size:12px}
+  .card img{height:120px}
+  .card h3{font-size:14px}
+  .price{font-size:13px}
+  .btn{padding:6px 10px;font-size:13px}
+  input,textarea{font-size:14px}
+}
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="brand">
+        <!-- Replace logo.png with your logo file -->
+        <img src="logo.png" alt="Logo">
+        <div>
+          <h1>Mirza Zawar</h1>
+          <div style="font-size:15px;color:var(--muted)">Compney</div>
+        </div>
+      </div>
+
+      <nav>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#catalog">Catalog</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+
+      <!-- Right quick-actions (hidden on small screens) -->
+      <div style="display:flex;gap:10px;align-items:center">
+        <a href="tel:03187196942" class="btn ghost" style="display:inline-block">Call: 0318-7196942</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO / SLIDER -->
+  <main id="home">
+    <section class="hero">
+      <div class="slider" id="slider">
+        <div class="slides">
+          <div class="slide" style="background-image:url('slide1.png')">
+            <div class="overlay"></div>
+            <div class="slide-content">
+              <h2>Custom Kitchens for modern homes</h2>
+              <p>Design, supply & installation — premium materials, perfect fit.</p>
+              <div style="margin-top:12px">
+                <a class="btn primary" href="#catalog">Explore Catalog</a>
+                <a class="btn ghost" href="#contact" style="margin-left:8px">Get Quote</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide" style="background-image:url('slide2.png')">
+            <div class="overlay"></div>
+            <div class="slide-content">
+              <h2>Built-in Wardrobes with smart storage</h2>
+              <p>Space-optimised designs tailored to your room & budget.</p>
+              <div style="margin-top:12px">
+                <a class="btn primary" href="#services">Our Services</a>
+                <a class="btn ghost" href="#contact" style="margin-left:8px">Contact</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide" style="background-image:url('slide3.png')">
+            <div class="overlay"></div>
+            <div class="slide-content">
+              <h2>Custom Wardrobe&Kitchen — built to last</h2>
+              <p>From dining tables to TV units, hand-finished workmanship.</p>
+              <div style="margin-top:12px">
+                <a class="btn primary" href="#catalog">Shop Now</a>
+                <a class="btn ghost" href="#contact" style="margin-left:8px">Order</a>
+              </div>
+            </div>
+          </div>
+       
+		
+		  <div class="slide" style="background-image:url('slide4.png')">
+            <div class="overlay"></div>
+            <div class="slide-content">
+              <h2>“Smart Steel Solutions — Durable & Reliable”</h2>
+              <p>“From steel gates to heavy structures — built with precision and strength..</p>
+              <div style="margin-top:12px">
+                <a class="btn primary" href="#catalog">Shop Now</a>
+                <a class="btn ghost" href="#contact" style="margin-left:8px">Order</a>
+              </div>
+            </div>
+          </div>
+		  
+		   <div class="slide" style="background-image:url('slide5.png')">
+            <div class="overlay"></div>
+            <div class="slide-content">
+             <h2>“Smart Care for Your Home Appliances”</h2>
+				<p>“From refrigerators to washing machines — expert repair for lasting performance.”</p>
+              <div style="margin-top:150px">
+                <a class="btn primary" href="#catalog">Hire Now </a>
+                <a class="btn ghost" href="#contact" style="margin-left:150px">Details</a>
+              </div>
+            </div>
+          </div>
+		  
+		    <div class="slide" style="background-image:url('slide6.png')">
+            <div class="overlay"></div>
+            <div class="slide-content">
+            <h2>“Bringing Walls to Life — With Color & Care”</h2>
+			<p>“From vibrant interiors to durable exteriors — painting solutions that last.”</p>
+              <div style="margin-top:150px">
+                <a class="btn primary" href="#catalog">Hire Now </a>
+                <a class="btn ghost" href="#contact" style="margin-left:150px">Details</a>
+              </div>
+            </div>
+          </div>
+		  
+		  <div class="slide" style="background-image:url('slide7.png')">
+            <div class="overlay"></div>
+            <div class="slide-content">
+           <h2>“Personal Care — Females Only”</h2>
+			<p>“From skincare to self-care, our exclusive personal care services are designed for women who deserve the best. Gentle, safe, and professional treatments to help you look and feel confident every day.”</p>
+              <div style="margin-top:70px">
+                <a class="btn primary" href="#catalog">Hire Now </a>
+                <a class="btn ghost" href="#contact" style="margin-left:650px">Details</a>
+              </div>
+            </div>
+          </div>
+		  
+		   <div class="slide" style="background-image:url('slide8.png')">
+            <div class="overlay"></div>
+            <div class="slide-content">
+           <h2>“Cooling Comfort — Anytime, Anywhere”</h2>
+			<p>“From quick installations to reliable maintenance — keeping your air cool and fresh.”</p>
+              <div style="margin-top:70px">
+                <a class="btn primary" href="#catalog">Hire Now </a>
+                <a class="btn ghost" href="#contact" style="margin-left:15px">Details</a>
+              </div>
+            </div>
+          </div>
+		  
+		   <div class="slide" style="background-image:url('slide9.png')">
+            <div class="overlay"></div>
+            <div class="slide-content">
+          <h2>“Smart Plumbing Solutions — Leak Free Living”</h2>
+			<p>“From bathroom fittings to pipe repairs — delivering water flow with precision.”</p>
+              <div style="margin-top:70px">
+                <a class="btn primary" href="#catalog">Hire Now </a>
+                <a class="btn ghost" href="#contact" style="margin-left:15px">Details</a>
+              </div>
+            </div>
+          </div>
+		  
+		    <div class="slide" style="background-image:url('slide10.png')">
+            <div class="overlay"></div>
+            <div class="slide-content">
+          <h2>“Powering Homes — Safely & Efficiently”</h2>
+			<p>“From wiring to lighting — bright solutions built with care and safety.”</p>
+              <div style="margin-top:50px">
+                <a class="btn primary" href="#catalog">Hire Now </a>
+                <a class="btn ghost" href="#contact" style="margin-left:15px">Details</a>
+              </div>
+            </div>
+          </div>
+		  
+        </div>
+
+        <button class="slider-btn left" id="prevBtn" aria-label="Previous">&lt;</button>
+        <button class="slider-btn right" id="nextBtn" aria-label="Next">&gt;</button>
+
+        <div class="dots" id="dots"></div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section">
+      <div class="section-header">
+        <h2>Our Services</h2>
+        <div style="color:var(--muted)">Designed • Manufactured • Installed</div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <img src="service-kitchen.png" alt="Kitchens">
+          <h3>Modular Kitchen Design</h3>
+          <div class="price">Visit & Inspection Charges Rs. 1000 </div>
+          <p style="color:var(--muted);font-size:13px">Complete design + supply + installation. </p>
+          <div class="actions">
+            <a class="btn primary" href="#catalog" onclick="filterCatalog('kitchen')">View</a>
+            <a class="btn ghost" href="https://wa.me/923187196942?text=Assalamualaikum%20I%20want%20a%20kitchen%20estimate" target="_blank">Order</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="service-wardrobe.png" alt="Wardrobes">
+          <h3>Custom Wardrobes</h3>
+          <div class="price">Visit & Inspection Charges Rs. 1000</div>
+          <p style="color:var(--muted);font-size:13px">Sliding & hinged doors, multiple finishes.</p>
+          <div class="actions">
+            <a class="btn primary" href="#catalog" onclick="filterCatalog('wardrobe')">View</a>
+            <a class="btn ghost" href="https://wa.me/923187196942?text=I%20need%20a%20wardrobe%20quotation" target="_blank">Order</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="Steel Fabricator.png" alt="Furniture">
+          <h3>Steel Fabricator</h3>
+          <div class="price">Visit & Inspection Charges Rs. 1000</div>
+          <p style="color:var(--muted);font-size:13px">Gates,Stairs aur Railings,Doors & Frames,Roofing & Shade Work.</p>
+          <div class="actions">
+            <a class="btn primary" href="#catalog" onclick="filterCatalog('furniture')">View</a>
+            <a class="btn ghost" href="https://wa.me/923187196942?text=I%20want%20custom%20furniture" target="_blank">Order</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catalog -->
+    <section id="catalog" class="section" style="margin-top:24px">
+      <div class="section-header">
+        <h2>Catalog — Featured Items</h2>
+        <div style="color:var(--muted)">Click any item to view details or order via WhatsApp</div>
+      </div>
+
+      <div class="grid" id="catalogGrid">
+        <!-- example item -->
+        <div class="card" data-type="kitchen">
+          <img src="item1.png" alt="Item">
+          <h3>Sleek white chipboard shelf with edge banding – 18" L × 6" D × 8" H</h3>
+          <div class="price">Rs. 2500</div>
+          <p style="color:var(--muted);font-size:13px">ideal for perfumes & candles..</p>
+          <div class="actions">
+            <button class="btn primary" onclick="viewItem(this)">View</button>
+            <a class="btn ghost" href="https://wa.me/923187196942?text=I%20want%20this%20Classic%20Shaker%20Kitchen" target="_blank">Order</a>
+          </div>
+        </div>
+
+        <div class="card" data-type="wardrobe">
+          <img src="item2.png" alt="Wardrobe">
+          <h3>Minimalist laminated white chipboard shelf – 20" L × 6" D × 9" H</h3>
+          <div class="price">Rs. 2100</div>
+          <p style="color:var(--muted);font-size:13px">smooth edge-banded finish..</p>
+          <div class="actions">
+            <button class="btn primary" onclick="viewItem(this)">View</button>
+            <a class="btn ghost" href="https://wa.me/923187196942?text=I%20want%20this%203-Door%20Wardrobe" target="_blank">Order</a>
+          </div>
+        </div>
+
+        <div class="card" data-type="furniture">
+          <img src="item3.png" alt="Table">
+          <h3>Decorative interlocking shelf – 22" L × 6" D × 9" H</h3>
+          <div class="price">Rs. 2800</div>
+          <p style="color:var(--muted);font-size:13px">“white chipboard with PVC edge banding.”.</p>
+          <div class="actions">
+            <button class="btn primary" onclick="viewItem(this)">View</button>
+            <a class="btn ghost" href="https://wa.me/923187196942?text=I%20want%20this%20Dining%20Table" target="_blank">Order</a>
+          </div>
+        </div>
+		
+		 <div class="card" data-type="furniture">
+          <img src="item4.png" alt="Table">
+          <h3>Elegant wall-mounted chipboard shelf – 24" L × 6" D × 10" H</h3>
+          <div class="price">Rs. 3200</div>
+          <p style="color:var(--muted);font-size:13px">“strong & stylish with edge protection..”.</p>
+          <div class="actions">
+            <button class="btn primary" onclick="viewItem(this)">View</button>
+            <a class="btn ghost" href="https://wa.me/923187196942?text=I%20want%20this%20Dining%20Table" target="_blank">Order</a>
+          </div>
+        </div>
+
+        <!-- add more items as needed -->
+      </div>
+    </section>
+
+    <!-- About + Contact -->
+    <section class="section">
+      <div class="two-col">
+        <div class="about" id="about">
+          <h3>About Mirza Zawar Woodworks</h3>
+          <p style="color:var(--muted);margin-top:8px">
+            Mirza Zawar Woodworks specialises in kitchens, wardrobes and custom furniture. We combine
+            modern design with durable materials and precise installation. Our mission is to deliver
+            high-quality results on time and within budget.
+          </p>
+
+          <ul style="margin-top:12px;color:var(--muted)">
+            <li>Free site visit & measurement</li>
+            <li>Quality plywood & hardware</li>
+            <li>On-site installation by experienced carpenters</li>
+          </ul>
+        </div>
+
+        <div class="contact" id="contact">
+          <h3>Contact Us</h3>
+          <p style="color:var(--muted);margin-bottom:8px">Call or WhatsApp: <strong>0318-7196942</strong></p>
+
+          <form onsubmit="submitContact(event)">
+            <input type="text" id="name" placeholder="Your Name" required />
+            <input type="tel" id="phone" placeholder="Phone (e.g. 0318xxxxxxx)" required />
+            <input type="email" id="email" placeholder="Email (replace in code if needed)" />
+            <textarea id="message" placeholder="Your message / project details" required></textarea>
+            <div style="display:flex;gap:10px">
+              <button type="submit" class="btn primary">Send Message</button>
+              <a class="btn ghost" href="mailto:youremail@example.com?subject=Website%20Enquiry" style="align-self:center">Email Us</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Mirza Zawar Woodworks · Made with care · <span style="color:var(--muted)">Craftsmanship you can trust</span>
+    </footer>
+  </main>
+
+  <!-- WhatsApp floating -->
+  <a class="whatsapp" href="https://wa.me/923187196942?text=Assalamualaikum%20I%20want%20to%20order" target="_blank" aria-label="Order Now on WhatsApp">
+    <img src="images/whatsapp-icon.png" alt="WhatsApp">
+    <div>
+      <div style="font-weight:800;font-size:14px">Order Now</div>
+      <div style="font-size:12px;opacity:0.95">Fast reply on WhatsApp</div>
+    </div>
+  </a>
+
+  <!-- ======= Scripts ======= -->
+  <script>
+    /* ===== Slider logic ===== */
+    (function(){
+      const slidesEl = document.querySelector('.slides');
+      const slides = document.querySelectorAll('.slide');
+      const dotsEl = document.getElementById('dots');
+      const prev = document.getElementById('prevBtn');
+      const next = document.getElementById('nextBtn');
+      let idx = 0;
+      let timer = null;
+
+      // create dots
+      slides.forEach((s,i)=>{
+        const d = document.createElement('div');
+        d.className='dot'+(i===0?' active':'');
+        d.addEventListener('click', ()=>{goto(i)});
+        dotsEl.appendChild(d);
+      });
+
+      function goto(i){
+        idx = (i + slides.length) % slides.length;
+        slidesEl.style.transform = 'translateX(' + (-idx*100) + '%)';
+        updateDots();
+      }
+      function updateDots(){
+        document.querySelectorAll('.dot').forEach((d,i)=> d.classList.toggle('active', i===idx));
+      }
+      prev.addEventListener('click', ()=>{ goto(idx-1); restartAuto(); });
+      next.addEventListener('click', ()=>{ goto(idx+1); restartAuto(); });
+
+      function auto(){
+        timer = setInterval(()=>{ goto(idx+1); }, 4000);
+      }
+      function restartAuto(){ clearInterval(timer); auto(); }
+
+      // start
+      auto();
+    })();
+
+    /* ===== Catalog helpers ===== */
+    function viewItem(btn){
+      const card = btn.closest('.card');
+      const title = card.querySelector('h3').innerText;
+      const price = card.querySelector('.price').innerText;
+      const text = encodeURIComponent('Assalamualaikum, I want to order: ' + title + ' (' + price + ')');
+      window.open('https://wa.me/923187196942?text=' + text, '_blank');
+    }
+
+    function filterCatalog(type){
+      const items = document.querySelectorAll('#catalogGrid .card');
+      items.forEach(it=>{
+        if(!type) { it.style.display='block'; return; }
+        it.style.display = it.dataset.type === type ? 'block' : 'none';
+      });
+      // small scroll to catalog
+      document.querySelector('#catalog').scrollIntoView({behavior:'smooth'});
+    }
+
+    /* ===== Contact form handling (simple) ===== */
+    function submitContact(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('message').value.trim();
+
+      const text = encodeURIComponent(
+        "New website enquiry:\nName: " + name +
+        "\nPhone: " + phone +
+        (email ? ("\nEmail: " + email) : "") +
+        "\nMessage: " + msg
+      );
+
+      // open WhatsApp chat for quick reply
+      window.open('https://wa.me/923187196942?text=' + text, '_blank');
+
+      // optionally you can also open mail client:
+      // window.location.href = 'mailto:youremail@example.com?subject=Website%20Enquiry&body=' + text;
+    }
+
+    // footer year
+    document.getElementById('year').innerText = new Date().getFullYear();
+  </script>
+</body>
+</html>
