@@ -112,6 +112,90 @@
   .btn{padding:6px 10px;font-size:13px}
   input,textarea{font-size:14px}
 }
+<script>
+// ===== Slider =====
+const slides = document.querySelectorAll(".slide");
+const slidesContainer = document.querySelector(".slides");
+const dotsContainer = document.getElementById("dots");
+let currentSlide = 0;
+
+// Create dots
+slides.forEach((_, i) => {
+  const dot = document.createElement("div");
+  dot.classList.add("dot");
+  if (i === 0) dot.classList.add("active");
+  dot.addEventListener("click", () => goToSlide(i));
+  dotsContainer.appendChild(dot);
+});
+const dots = document.querySelectorAll(".dot");
+
+function updateSlider() {
+  slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+  dots.forEach((d, i) => d.classList.toggle("active", i === currentSlide));
+}
+
+function goToSlide(index) {
+  currentSlide = (index + slides.length) % slides.length;
+  updateSlider();
+}
+
+document.getElementById("nextBtn").addEventListener("click", () => goToSlide(currentSlide + 1));
+document.getElementById("prevBtn").addEventListener("click", () => goToSlide(currentSlide - 1));
+
+// Auto slide
+setInterval(() => goToSlide(currentSlide + 1), 5000);
+
+// ===== Catalog Price Calculation =====
+function updateCatalogPrices() {
+  document.querySelectorAll("#catalogGrid .card").forEach(card => {
+    const base = parseInt(card.querySelector(".base-price").textContent) || 0;
+    const delivery = parseInt(card.querySelector(".delivery-price").textContent) || 0;
+    const totalEl = card.querySelector(".total-price");
+    totalEl.textContent = base + delivery;
+  });
+}
+updateCatalogPrices();
+
+// ===== Catalog Filter =====
+function filterCatalog(type) {
+  const cards = document.querySelectorAll("#catalogGrid .card");
+  cards.forEach(card => {
+    card.style.display = (type === "all" || card.dataset.type === type) ? "flex" : "none";
+  });
+  window.location.hash = "#catalog";
+}
+
+// ===== View Item Alert =====
+function viewItem(btn) {
+  const card = btn.closest(".card");
+  const title = card.querySelector("h3").textContent;
+  const price = card.querySelector(".total-price").textContent;
+  alert(`Item: ${title}\nTotal Price: Rs. ${price}`);
+}
+
+// ===== Contact Form =====
+function submitContact(e) {
+  e.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const msg = document.getElementById("message").value.trim();
+
+  if (!name || !phone || !msg) {
+    alert("Please fill all required fields.");
+    return;
+  }
+
+  // WhatsApp message format
+  const whatsappMsg = `Assalamualaikum, my name is ${name}. Phone: ${phone}. Email: ${email}. \nMessage: ${msg}`;
+  window.open(`https://wa.me/923187196942?text=${encodeURIComponent(whatsappMsg)}`, "_blank");
+
+  e.target.reset();
+}
+
+// ===== Footer Year =====
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 
 
@@ -582,6 +666,7 @@ document.querySelectorAll('.card').forEach(card => {
   </script>
 </body>
 </html>
+
 
 
 
