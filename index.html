@@ -1,262 +1,266 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mirza Zawar Company</title>
-  <meta name="description" content="Premium Home Services & Furniture" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pro Joint Wood Works</title>
 
-  <style>
-    /* ======= Basic Reset & Fonts ======= */
-    :root{
-      --accent:#D4AF37;
-      --dark:#3E3E3E;
-      --muted:#6b7280;
-      --card:#F5F5F5;
-      --shadow: 0 6px 18px rgba(13,27,42,0.08); 
-      --glass: rgba(255,255,255,0.95);
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;font-family: 'Inter', sans-serif; color:var(--dark); background:#FFF8F0; scroll-behavior: smooth;} 
-    a{color:inherit;text-decoration:none}
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0f0f0f;
+  color:#fff;
+  scroll-behavior:smooth;
+}
 
-    /* ======= Header & Navigation ======= */
-    .header{
-      width:100%;
-      background: var(--glass);
-      position:sticky;
-      top:0;
-      z-index:100;
-      border-bottom:1px solid #e6e2df;
-      backdrop-filter: blur(10px);
-    }
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{height:60px;width:60px;object-fit:cover;border-radius:8px;box-shadow:var(--shadow)}
-    .brand h1{font-size:20px;line-height:1;color:var(--dark); margin:0;}
-    
-    nav { display: flex; align-items: center; }
-    .nav-links{display:flex; gap:10px;}
-    .nav-links a{padding:8px 15px; border-radius:8px; color:var(--muted); font-weight:600; transition: 0.3s;}
-    .nav-links a:hover{background:#FFF3D6; color:var(--accent)}
+/* LOADER */
+#loader{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+#loader h1{
+  color:#D4AF37;
+  animation:blink 1s infinite;
+}
+@keyframes blink{
+  50%{opacity:0.3;}
+}
 
-    /* ======= Hero Slider ======= */
-    .hero{max-width:1100px;margin:18px auto 30px;padding:0 20px}
-    .slider{position:relative;border-radius:12px;overflow:hidden;box-shadow:var(--shadow); background: #333;}
-    .slides{display:flex;transition:transform .6s cubic-bezier(0.4, 0, 0.2, 1);}
-    .slide{min-width:100%;height:400px;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center;position:relative;color:white}
-    .slide .overlay{position:absolute;inset:0;background:rgba(0,0,0,0.4);}
-    .slide-content{position:relative;z-index:2;padding:24px;max-width:700px; text-align: center;}
-    .slide h2{font-size:32px;margin-bottom:12px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);}
-    
-    .slider-btn{position:absolute;top:50%;transform:translateY(-50%);background:var(--glass);border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;z-index:10; font-weight: bold;}
-    .slider-btn.left{left:15px}
-    .slider-btn.right{right:15px}
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 30px;
+  background:#000;
+}
+nav h2{color:#D4AF37;}
 
-    /* ======= Grid & Cards ======= */
-    .section{max-width:1100px;margin:40px auto;padding:0 20px}
-    .section-header{margin-bottom:20px; border-left: 4px solid var(--accent); padding-left: 15px;}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:20px}
-    .card{background:white;padding:15px;border-radius:15px;box-shadow:var(--shadow); transition: transform 0.3s;}
-    .card:hover { transform: translateY(-5px); }
-    .card img{width:100%;height:200px;object-fit:cover;border-radius:10px; margin-bottom: 15px;}
-    .price-box{background: #f9f9f9; padding: 10px; border-radius: 8px; margin: 10px 0; font-size: 14px;}
-    .total-price{font-weight:800;color:var(--accent); font-size: 1.1em;}
+/* HERO */
+.hero{
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('work1.jpg');
+  background-size:cover;
+  animation:fadeIn 2s;
+}
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+.btn{
+  margin-top:20px;
+  padding:12px 25px;
+  background:#D4AF37;
+  border:none;
+}
 
-    /* ======= Buttons ======= */
-    .btn{padding:10px 18px;border-radius:8px;font-weight:700;border:0;cursor:pointer; display: inline-block; text-align: center; transition: 0.2s;}
-    .primary{background:var(--accent);color:white}
-    .primary:hover{background: #b8962d;}
-    .ghost{background:#FFF3D6;color:var(--dark)}
-    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 15px; }
+/* BEFORE AFTER */
+.ba-container{
+  position:relative;
+  max-width:600px;
+  margin:auto;
+}
+.ba-container img{width:100%;}
+.ba-overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  width:50%;
+  overflow:hidden;
+}
+.ba-slider{
+  width:100%;
+}
 
-    /* ======= Mobile Nav ======= */
-    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; z-index: 101; }
-    .hamburger span { width: 25px; height: 3px; background: var(--dark); border-radius: 2px; }
+/* GALLERY */
+.gallery{
+  padding:40px;
+  text-align:center;
+}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:10px;
+}
+.gallery-item{
+  background:#1a1a1a;
+  padding:10px;
+}
+.gallery img{
+  width:100%;
+}
+.location{
+  font-size:14px;
+  color:#D4AF37;
+}
 
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none; position: absolute; top: 100%; left: 0; width: 100%; 
-        flex-direction: column; background: white; padding: 20px; box-shadow: var(--shadow);
-      }
-      .nav-links.show { display: flex; }
-      .hamburger { display: flex; }
-      .slide { height: 250px; }
-      .slide h2 { font-size: 20px; }
-    }
+/* CURRENT WORK */
+.current{
+  background:#111;
+  padding:30px;
+  text-align:center;
+}
 
-    /* WhatsApp Button */
-    .whatsapp-float {
-      position:fixed; right:20px; bottom:20px; background:#25d366; color:white; 
-      padding:15px 20px; border-radius:50px; font-weight:bold; z-index:1000; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-  </style>
+/* PROBLEM SOLUTION */
+.problem{
+  padding:40px;
+  text-align:center;
+}
+.problem-box{
+  background:#1a1a1a;
+  margin:10px;
+  padding:20px;
+}
+
+/* CONTACT */
+.contact{text-align:center;padding:40px;}
+.whatsapp{
+  background:#25D366;
+  padding:12px 25px;
+  color:#fff;
+  text-decoration:none;
+}
+</style>
 </head>
+
 <body>
 
-  <header class="header">
-    <div class="container">
-      <div class="brand">
-        <img src="logo.jpg" alt="Mirza Zawar Logo">
-        <div>
-          <h1>Mirza Zawar</h1>
-          <small style="color:var(--muted); font-weight: bold; letter-spacing: 1px;">COMPANY</small>
-        </div>
-      </div>
+<!-- LOADER -->
+<div id="loader">
+  <h1>Pro Joint Loading...</h1>
+</div>
 
-      <div class="hamburger" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </div>
+<!-- HERO -->
+<section class="hero">
+  <h1>Kitchen • Wardrobe • Media Wall</h1>
+  <p>3D design pehle — kaam baad me. Har detail ka khayal.</p>
+</section>
 
-      <nav>
-        <div class="nav-links" id="navLinks">
-          <a href="#home">Home</a>
-          <a href="#services">Services</a>
-          <a href="#catalog">Catalog</a>
-          <a href="#contact">Contact</a>
-          <a href="tel:03187196942" style="color:var(--accent)">📞 0318-7196942</a>
-        </div>
-      </nav>
+<!-- BEFORE AFTER -->
+<section style="padding:40px;text-align:center;">
+  <h2>Before / After</h2>
+  <div class="ba-container">
+    <img src="work2.jpg">
+    <div class="ba-overlay">
+      <img src="work3.jpg">
     </div>
-  </header>
+    <input type="range" min="0" max="100" value="50" class="ba-slider">
+  </div>
+</section>
 
-  <main id="home">
-    <section class="hero">
-      <div class="slider">
-        <div class="slides" id="slideTrack">
-          <div class="slide" style="background-image:url('slide1.png')">
-            <div class="overlay"></div>
-            <div class="slide-content">
-              <h2>Custom Kitchens for Modern Homes</h2>
-              <p>Design, supply & installation — premium materials, perfect fit.</p>
-              <br>
-              <a class="btn primary" href="#services">Our Services</a>
-            </div>
-          </div>
-          <div class="slide" style="background-image:url('slide2.png')">
-            <div class="overlay"></div>
-            <div class="slide-content">
-              <h2>Smart Steel Solutions</h2>
-              <p>Durable gates and heavy structures built with precision.</p>
-              <br>
-              <a class="btn primary" href="https://wa.me/923187196942" target="_blank">Join Team</a>
-            </div>
-          </div>
-        </div>
-        <button class="slider-btn left" onclick="moveSlide(-1)">&#10094;</button>
-        <button class="slider-btn right" onclick="moveSlide(1)">&#10095;</button>
-      </div>
-    </section>
+<!-- GALLERY -->
+<section class="gallery">
+  <h2>Our Work</h2>
+  <div class="gallery-grid">
 
-    <section id="services" class="section">
-      <div class="section-header">
-        <h2>Expert Services</h2>
-        <p>Professional manufacturing and installation</p>
-      </div>
-      <div class="grid">
-        <div class="card">
-          <img src="service-kitchen.png" alt="Kitchen">
-          <h3>Modular Kitchen Design</h3>
-          <p class="price-box"><b>Visit Fee:</b> Rs. 1000</p>
-          <div class="actions">
-            <a class="btn primary" href="https://wa.me/923187196942?text=Hire%20Kitchen%20Service" target="_blank">Hire Now</a>
-            <a class="btn ghost" href="https://wa.me/923187196942?text=Kitchen%20Inspection">Visit</a>
-          </div>
-        </div>
-        </div>
-    </section>
+    <div class="gallery-item">
+      <img src="work1.jpg">
+      <div class="location">Mandi Bahauddin</div>
+    </div>
 
-    <section id="catalog" class="section">
-      <div class="section-header">
-        <h2>Product Catalog</h2>
-        <p>Premium home items delivered to your door</p>
-      </div>
-      <div class="grid" id="catalogGrid">
-        
-        <div class="card">
-          <img src="item1.png" alt="Shelf">
-          <h3>Sleek White Shelf (MZ01010)</h3>
-          <p style="font-size:12px; color:var(--muted)">18" L × 6" D × 8" H</p>
-          <div class="price-box">
-            Price: Rs. <span class="base-p">2000</span><br>
-            Advance DC: Rs. <span class="dc-p">650</span><br>
-            <strong>Total: Rs. <span class="total-p"></span></strong>
-          </div>
-          <div class="actions">
-            <a class="btn primary" href="https://wa.me/923187196942?text=Order%20MZ01010" target="_blank">Order Now</a>
-          </div>
-        </div>
+    <div class="gallery-item">
+      <img src="work2.jpg">
+      <div class="location">Gujrat</div>
+    </div>
 
-        <div class="card">
-          <img src="item2.png" alt="Shelf">
-          <h3>Minimalist Laminated (MZ01020)</h3>
-          <p style="font-size:12px; color:var(--muted)">20" L × 6" D × 9" H</p>
-          <div class="price-box">
-            Price: Rs. <span class="base-p">1700</span><br>
-            Advance DC: Rs. <span class="dc-p">500</span><br>
-            <strong>Total: Rs. <span class="total-p"></span></strong>
-          </div>
-          <div class="actions">
-            <a class="btn primary" href="https://wa.me/923187196942?text=Order%20MZ01020" target="_blank">Order Now</a>
-          </div>
-        </div>
+    <div class="gallery-item">
+      <img src="work3.jpg">
+      <div class="location">Lahore</div>
+    </div>
 
-      </div>
-    </section>
-  </main>
+    <div class="gallery-item">
+      <img src="work4.jpg">
+      <div class="location">Islamabad</div>
+    </div>
 
-  <a href="https://wa.me/923187196942" class="whatsapp-float" target="_blank">
-    WhatsApp Order
-  </a>
+    <div class="gallery-item">
+      <img src="work5.jpg">
+      <div class="location">Rawalpindi</div>
+    </div>
 
-  <footer style="text-align: center; padding: 40px; background: #eee;">
-    <p>&copy; 2026 Mirza Zawar Company. All rights reserved.</p>
-  </footer>
+    <div class="gallery-item">
+      <img src="work6.jpg">
+      <div class="location">Sialkot</div>
+    </div>
 
-  <script>
-    // --- Mobile Menu Toggle ---
-    function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('show');
-    }
+    <div class="gallery-item">
+      <img src="work7.jpg">
+      <div class="location">Jhelum</div>
+    </div>
 
-    // --- Slider Logic ---
-    let currentSlide = 0;
-    const track = document.getElementById('slideTrack');
-    const totalSlides = document.querySelectorAll('.slide').length;
+    <div class="gallery-item">
+      <img src="work8.jpg">
+      <div class="location">Sarghoda</div>
+    </div>
 
-    function moveSlide(direction) {
-      currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-      track.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
+    <div class="gallery-item">
+      <img src="work9.jpg">
+      <div class="location">Faisalabad</div>
+    </div>
 
-    // Auto-slide every 5 seconds
-    setInterval(() => moveSlide(1), 5000);
+    <div class="gallery-item">
+      <img src="work10.jpg">
+      <div class="location">Karachi</div>
+    </div>
 
-    // --- Automatic Price Calculator ---
-    function calculatePrices() {
-      const cards = document.querySelectorAll('.card');
-      cards.forEach(card => {
-        const baseElement = card.querySelector('.base-p');
-        const dcElement = card.querySelector('.dc-p');
-        const totalElement = card.querySelector('.total-p');
+  </div>
+</section>
 
-        if (baseElement && dcElement && totalElement) {
-          const base = parseInt(baseElement.innerText);
-          const dc = parseInt(dcElement.innerText);
-          totalElement.innerText = base + dc;
-        }
-      });
-    }
+<!-- CURRENT WORK -->
+<section class="current">
+  <h2>Current Project</h2>
+  <p>📍 Currently working in: Islamabad</p>
+</section>
 
-    // Run calculation on load
-    window.onload = calculatePrices;
-  </script>
+<!-- PROBLEM SOLUTION -->
+<section class="problem">
+  <h2>Customer Problems We Solve</h2>
+
+  <div class="problem-box">
+    ❌ Cheap material → ✔ We use premium engineered wood
+  </div>
+
+  <div class="problem-box">
+    ❌ Design samaj nahi ata → ✔ 3D SketchUp preview
+  </div>
+
+  <div class="problem-box">
+    ❌ Kaam time par nahi hota → ✔ Proper agreement system
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <h2>Contact Now</h2>
+  <a class="whatsapp" href="https://wa.me/923488222368">WhatsApp</a>
+</section>
+
+<script>
+// LOADER
+window.onload = function(){
+  document.getElementById("loader").style.display="none";
+}
+
+// SLIDER
+const slider=document.querySelector(".ba-slider");
+const overlay=document.querySelector(".ba-overlay");
+
+slider.addEventListener("input",function(){
+  overlay.style.width=this.value+"%";
+});
+</script>
+
 </body>
 </html>
