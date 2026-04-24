@@ -1,266 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pro Joint Wood Works</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-gold: #D4AF37; /* Gold color for luxury feel */
+            --dark-wood: #2c1e12;    /* Dark brown/wood color */
+            --white: #ffffff;
+        }
 
-<style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:#0f0f0f;
-  color:#fff;
-  scroll-behavior:smooth;
-}
+        body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
-/* LOADER */
-#loader{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:#000;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
-#loader h1{
-  color:#D4AF37;
-  animation:blink 1s infinite;
-}
-@keyframes blink{
-  50%{opacity:0.3;}
-}
+        /* Header Container */
+        .header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-/* NAV */
-nav{
-  display:flex;
-  justify-content:space-between;
-  padding:15px 30px;
-  background:#000;
-}
-nav h2{color:#D4AF37;}
+        /* Logo Section */
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-/* HERO */
-.hero{
-  height:90vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('work1.jpg');
-  background-size:cover;
-  animation:fadeIn 2s;
-}
-@keyframes fadeIn{
-  from{opacity:0;}
-  to{opacity:1;}
-}
-.btn{
-  margin-top:20px;
-  padding:12px 25px;
-  background:#D4AF37;
-  border:none;
-}
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
 
-/* BEFORE AFTER */
-.ba-container{
-  position:relative;
-  max-width:600px;
-  margin:auto;
-}
-.ba-container img{width:100%;}
-.ba-overlay{
-  position:absolute;
-  top:0;
-  left:0;
-  width:50%;
-  overflow:hidden;
-}
-.ba-slider{
-  width:100%;
-}
+        .logo-text h1 {
+            font-size: 20px;
+            margin: 0;
+            color: var(--dark-wood);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-/* GALLERY */
-.gallery{
-  padding:40px;
-  text-align:center;
-}
-.gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:10px;
-}
-.gallery-item{
-  background:#1a1a1a;
-  padding:10px;
-}
-.gallery img{
-  width:100%;
-}
-.location{
-  font-size:14px;
-  color:#D4AF37;
-}
+        .logo-text p {
+            font-size: 12px;
+            margin: 0;
+            color: var(--primary-gold);
+            font-weight: bold;
+        }
 
-/* CURRENT WORK */
-.current{
-  background:#111;
-  padding:30px;
-  text-align:center;
-}
+        /* Navigation Links */
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+        }
 
-/* PROBLEM SOLUTION */
-.problem{
-  padding:40px;
-  text-align:center;
-}
-.problem-box{
-  background:#1a1a1a;
-  margin:10px;
-  padding:20px;
-}
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-wood);
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s;
+        }
 
-/* CONTACT */
-.contact{text-align:center;padding:40px;}
-.whatsapp{
-  background:#25D366;
-  padding:12px 25px;
-  color:#fff;
-  text-decoration:none;
-}
-</style>
+        .nav-menu a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Call Button */
+        .header-btn {
+            background-color: var(--primary-gold);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header-btn:hover {
+            background-color: var(--dark-wood);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu { display: none; } /* Mobile par menu hide kar diya */
+            .logo-text h1 { font-size: 16px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-  <h1>Pro Joint Loading...</h1>
-</div>
+    <header class="header">
+        <div class="logo-area">
+            <img src="logo.jpg" alt="MZ Logo" class="logo-img"> <div class="logo-text">
+                <h1>MZ Wood Works</h1>
+                <p>Mandi Bahauddin</p>
+            </div>
+        </div>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>Kitchen • Wardrobe • Media Wall</h1>
-  <p>3D design pehle — kaam baad me. Har detail ka khayal.</p>
-</section>
+        <nav class="nav-menu">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#catalog">Products</a>
+            <a href="#about">About Us</a>
+        </nav>
 
-<!-- BEFORE AFTER -->
-<section style="padding:40px;text-align:center;">
-  <h2>Before / After</h2>
-  <div class="ba-container">
-    <img src="work2.jpg">
-    <div class="ba-overlay">
-      <img src="work3.jpg">
-    </div>
-    <input type="range" min="0" max="100" value="50" class="ba-slider">
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section class="gallery">
-  <h2>Our Work</h2>
-  <div class="gallery-grid">
-
-    <div class="gallery-item">
-      <img src="work1.jpg">
-      <div class="location">Mandi Bahauddin</div>
-    </div>
-
-    <div class="gallery-item">
-      <img src="work2.jpg">
-      <div class="location">Gujrat</div>
-    </div>
-
-    <div class="gallery-item">
-      <img src="work3.jpg">
-      <div class="location">Lahore</div>
-    </div>
-
-    <div class="gallery-item">
-      <img src="work4.jpg">
-      <div class="location">Islamabad</div>
-    </div>
-
-    <div class="gallery-item">
-      <img src="work5.jpg">
-      <div class="location">Rawalpindi</div>
-    </div>
-
-    <div class="gallery-item">
-      <img src="work6.jpg">
-      <div class="location">Sialkot</div>
-    </div>
-
-    <div class="gallery-item">
-      <img src="work7.jpg">
-      <div class="location">Jhelum</div>
-    </div>
-
-    <div class="gallery-item">
-      <img src="work8.jpg">
-      <div class="location">Sarghoda</div>
-    </div>
-
-    <div class="gallery-item">
-      <img src="work9.jpg">
-      <div class="location">Faisalabad</div>
-    </div>
-
-    <div class="gallery-item">
-      <img src="work10.jpg">
-      <div class="location">Karachi</div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CURRENT WORK -->
-<section class="current">
-  <h2>Current Project</h2>
-  <p>📍 Currently working in: Islamabad</p>
-</section>
-
-<!-- PROBLEM SOLUTION -->
-<section class="problem">
-  <h2>Customer Problems We Solve</h2>
-
-  <div class="problem-box">
-    ❌ Cheap material → ✔ We use premium engineered wood
-  </div>
-
-  <div class="problem-box">
-    ❌ Design samaj nahi ata → ✔ 3D SketchUp preview
-  </div>
-
-  <div class="problem-box">
-    ❌ Kaam time par nahi hota → ✔ Proper agreement system
-  </div>
-
-</section>
-
-<!-- CONTACT -->
-<section class="contact">
-  <h2>Contact Now</h2>
-  <a class="whatsapp" href="https://wa.me/923488222368">WhatsApp</a>
-</section>
-
-<script>
-// LOADER
-window.onload = function(){
-  document.getElementById("loader").style.display="none";
-}
-
-// SLIDER
-const slider=document.querySelector(".ba-slider");
-const overlay=document.querySelector(".ba-overlay");
-
-slider.addEventListener("input",function(){
-  overlay.style.width=this.value+"%";
-});
-</script>
+        <a href="tel:03488222368" class="header-btn">📞 Call Now</a>
+    </header>
 
 </body>
 </html>
