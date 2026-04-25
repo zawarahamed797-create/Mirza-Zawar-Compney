@@ -10,12 +10,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Times New Roman', Times, serif;
+            font-family: 'Times New Roman', Times, serif; /* Serif font for luxury look */
         }
 
         body, html {
+            height: 100%;
             background-color: #000;
-            color: white;
         }
 
         /* Main Hero Section */
@@ -24,7 +24,7 @@
             height: 100vh;
             width: 100%;
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                        url('banner2.jpg'); /* Updated file name */
+                        url('banner.jpg'); /* Aapki image file ka naam */
             background-size: cover;
             background-position: center;
             display: flex;
@@ -32,9 +32,11 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+            color: white;
             padding: 0 20px;
         }
 
+        /* Header / Navigation Area */
         header {
             position: absolute;
             top: 0;
@@ -69,7 +71,7 @@
             font-size: 14px;
             letter-spacing: 6px;
             text-transform: uppercase;
-            color: #c5a47e;
+            color: #c5a47e; /* Gold/Tan color */
             margin-bottom: 20px;
         }
 
@@ -91,8 +93,32 @@
         }
 
         /* Button Styles */
-        .cta-button, .secondary-button {
-            display: block;
+        .cta-button {
+            background-color: #c5a47e;
+            color: black;
+            padding: 18px 40px;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s ease;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 15px;
+            display: inline-block; /* Ensure it behaves like a button */
+        }
+
+        .cta-button:hover {
+            background-color: #b3936d;
+        }
+
+        .secondary-button {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 15px 40px;
             text-decoration: none;
             font-family: Arial, sans-serif;
             font-size: 14px;
@@ -100,74 +126,62 @@
             text-transform: uppercase;
             width: 100%;
             max-width: 400px;
-            text-align: center;
             transition: 0.3s;
+            display: inline-block;
         }
 
-        .cta-button {
-            background-color: #c5a47e;
-            color: black;
-            padding: 18px 0;
-            font-weight: bold;
-            margin-bottom: 15px;
+        .secondary-button:hover {
+            border-color: white;
         }
 
-        .secondary-button {
-            background-color: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 15px 0;
-        }
-
-        /* Expertise Section */
+        /* Naya Section: Our Expertise */
         .expertise-section {
             padding: 80px 20px;
             text-align: center;
-            background-color: #0b0b0b;
+            background-color: #000;
+            color: white;
         }
 
-        .expertise-title {
+        .expertise-header {
             font-size: 45px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-weight: 400;
         }
 
-        .title-underline {
-            width: 70px;
+        .underline {
+            width: 80px;
             height: 1px;
             background-color: #c5a47e;
-            margin: 0 auto 60px auto;
+            margin: 0 auto 50px auto;
         }
 
-        .expertise-card {
-            max-width: 500px;
+        .expertise-container {
+            max-width: 600px;
             margin: 0 auto;
             text-align: left;
         }
 
-        .expertise-image {
+        .expertise-img {
             width: 100%;
             height: auto;
             display: block;
+            margin-bottom: 30px;
         }
 
-        .card-content {
-            padding: 40px 0;
-        }
-
-        .card-content h3 {
-            font-size: 30px;
-            margin-bottom: 20px;
+        .expertise-card h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
             font-weight: 400;
         }
 
-        .card-content p {
+        .expertise-card p {
             font-family: Arial, sans-serif;
             font-size: 16px;
             line-height: 1.8;
-            color: #888;
+            color: #999;
             font-weight: 300;
         }
+
     </style>
 </head>
 <body>
@@ -183,6 +197,7 @@
         </header>
 
         <div class="sub-heading">Master Craftsmanship</div>
+        
         <h1 class="main-title">Furniture that outlasts trends.</h1>
 
         <p class="description">
@@ -195,12 +210,12 @@
     </div>
 
     <section class="expertise-section">
-        <h2 class="expertise-title">Our Expertise</h2>
-        <div class="title-underline"></div>
+        <h2 class="expertise-header">Our Expertise</h2>
+        <div class="underline"></div>
 
-        <div class="expertise-card">
-            <img src="banner2.jpg" alt="Bespoke Kitchen" class="expertise-image">
-            <div class="card-content">
+        <div class="expertise-container">
+            <div class="expertise-card">
+                <img src="banner2.jpg" alt="Bespoke Kitchen" class="expertise-img">
                 <h3>Bespoke Kitchens</h3>
                 <p>
                     The heart of the home, crafted without compromise. 
