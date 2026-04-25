@@ -24,7 +24,7 @@
             height: 100vh;
             width: 100%;
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                        url('banner.jpg'); 
+                        url('banner.jpg'); /* Ensure this file exists */
             background-size: cover;
             background-position: center;
             display: flex;
@@ -160,9 +160,8 @@
 
         .expertise-img {
             width: 100%;
-            /* Yahan height kam ki gayi hai */
             height: 400px; 
-            object-fit: cover; /* Image ko stretch hone se bachata hai */
+            object-fit: cover; 
             display: block;
             margin-bottom: 30px;
         }
@@ -182,7 +181,6 @@
             margin-bottom: 20px;
         }
 
-        /* New Explore Link Style */
         .explore-link {
             font-family: Arial, sans-serif;
             color: #c5a47e;
@@ -193,6 +191,36 @@
             font-weight: bold;
             display: inline-block;
             margin-bottom: 60px; /* Space before next card */
+        }
+
+        /* ----- NAYE SECTION KE LIYE CSS (An Atelier) ----- */
+        .atelier-section {
+            padding: 100px 20px;
+            background-color: #0b0b0b; /* Dark subtle background for Atelier section */
+            color: white;
+            text-align: left;
+            display: flex;
+            justify-content: center;
+        }
+
+        .atelier-content {
+            max-width: 700px; /* Limits width like in the image */
+            width: 100%;
+        }
+
+        .atelier-header {
+            font-size: clamp(30px, 7vw, 55px); /* Responsive large font */
+            line-height: 1.2;
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+
+        .atelier-paragraph {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #b3b3b3; /* Softer text color */
+            font-weight: 300;
         }
     </style>
 </head>
@@ -252,6 +280,15 @@
                 </p>
                 <a href="#" class="explore-link">EXPLORE &rarr;</a>
             </div>
+        </div>
+    </section>
+
+    <section class="atelier-section">
+        <div class="atelier-content">
+            <h2 class="atelier-header">Not a furniture store. <br> An atelier.</h2>
+            <p class="atelier-paragraph">
+                We don't pull boxes from a warehouse. Every piece is drafted, modeled, cut, and finished specifically for your space. We work with discerning homeowners and interior designers who demand perfection.
+            </p>
         </div>
     </section>
 
