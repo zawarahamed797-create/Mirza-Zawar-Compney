@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MZ Wood Works | Bespoke Craftsmanship</title>
+    <title>MZ Wood Works | Master Craftsmanship</title>
     <style>
-        /* Reset & Base Styles */
+        /* Reset basic styles */
         * {
             margin: 0;
             padding: 0;
@@ -13,19 +13,18 @@
             font-family: 'Times New Roman', Times, serif;
         }
 
-        body {
+        body, html {
             background-color: #000;
             color: white;
-            overflow-x: hidden;
         }
 
-        /* Hero Section */
+        /* Main Hero Section */
         .hero {
             position: relative;
             height: 100vh;
             width: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('your-hero-image.jpg'); /* Image path here */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('banner2.jpg'); /* Updated file name */
             background-size: cover;
             background-position: center;
             display: flex;
@@ -64,7 +63,7 @@
             margin: 5px 0;
         }
 
-        /* Hero Content */
+        /* Content Styles */
         .sub-heading {
             font-family: Arial, sans-serif;
             font-size: 14px;
@@ -75,94 +74,100 @@
         }
 
         .main-title {
-            font-size: clamp(35px, 8vw, 65px);
+            font-size: clamp(40px, 8vw, 75px);
             line-height: 1.1;
-            margin-bottom: 30px;
             max-width: 800px;
+            margin-bottom: 30px;
         }
 
-        .cta-button {
+        .description {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 600px;
+            color: #e0e0e0;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* Button Styles */
+        .cta-button, .secondary-button {
             display: block;
-            background-color: #c5a47e;
-            color: black;
-            padding: 18px 0;
             text-decoration: none;
             font-family: Arial, sans-serif;
             font-size: 14px;
-            font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
             width: 100%;
-            max-width: 350px;
-            margin-bottom: 15px;
+            max-width: 400px;
+            text-align: center;
             transition: 0.3s;
         }
 
+        .cta-button {
+            background-color: #c5a47e;
+            color: black;
+            padding: 18px 0;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
         .secondary-button {
-            display: block;
             background-color: transparent;
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
             padding: 15px 0;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            width: 100%;
-            max-width: 350px;
-            transition: 0.3s;
         }
 
-        /* Expertise Section (Based on your image) */
+        /* Expertise Section */
         .expertise-section {
             padding: 80px 20px;
             text-align: center;
-            background-color: #000;
+            background-color: #0b0b0b;
         }
 
         .expertise-title {
-            font-size: clamp(30px, 5vw, 45px);
-            margin-bottom: 15px;
+            font-size: 45px;
+            margin-bottom: 10px;
             font-weight: 400;
-            letter-spacing: 1px;
         }
 
         .title-underline {
-            width: 80px;
+            width: 70px;
             height: 1px;
             background-color: #c5a47e;
             margin: 0 auto 60px auto;
         }
 
-        .card-container {
+        .expertise-card {
             max-width: 500px;
             margin: 0 auto;
             text-align: left;
         }
 
-        .card-image {
+        .expertise-image {
             width: 100%;
             height: auto;
             display: block;
-            margin-bottom: 30px;
+        }
+
+        .card-content {
+            padding: 40px 0;
         }
 
         .card-content h3 {
-            font-size: 28px;
+            font-size: 30px;
+            margin-bottom: 20px;
             font-weight: 400;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
         }
 
         .card-content p {
             font-family: Arial, sans-serif;
             font-size: 16px;
             line-height: 1.8;
-            color: #999;
+            color: #888;
             font-weight: 300;
         }
-
     </style>
 </head>
 <body>
@@ -173,11 +178,17 @@
             <div class="menu-icon">
                 <div class="menu-line"></div>
                 <div class="menu-line"></div>
+                <div class="menu-line"></div>
             </div>
         </header>
 
         <div class="sub-heading">Master Craftsmanship</div>
         <h1 class="main-title">Furniture that outlasts trends.</h1>
+
+        <p class="description">
+            Hand-built bespoke kitchens, wardrobes, and media walls. 
+            Designed with precision, crafted with soul.
+        </p>
 
         <a href="#" class="cta-button">Book a Consultation</a>
         <a href="#" class="secondary-button">View Our Work</a>
@@ -187,14 +198,13 @@
         <h2 class="expertise-title">Our Expertise</h2>
         <div class="title-underline"></div>
 
-        <div class="card-container">
-            <img src="kitchen-image.jpg" alt="Bespoke Kitchen" class="card-image">
+        <div class="expertise-card">
+            <img src="banner2.jpg" alt="Bespoke Kitchen" class="expertise-image">
             <div class="card-content">
                 <h3>Bespoke Kitchens</h3>
                 <p>
                     The heart of the home, crafted without compromise. 
-                    From timeless shaker designs to sleek modern spaces, 
-                    we create kitchens that define luxury living.
+                    From timeless shaker designs to sleek modern spaces.
                 </p>
             </div>
         </div>
