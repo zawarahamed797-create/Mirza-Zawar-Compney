@@ -5,96 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MZ Wood Works | Master Craftsmanship</title>
     <style>
-        /* Aapka Original Style */
+        /* AAPKA ORIGINAL STYLE START */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Times New Roman', Times, serif; }
         body, html { height: 100%; background-color: #000; overflow-x: hidden; scroll-behavior: smooth; }
-
-        /* --- Nayi Animations --- */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        .hero {
-            position: relative; height: 100vh; width: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('banner.jpg');
-            background-size: cover; background-position: center;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; color: white; padding: 0 20px;
-        }
-
-        header { position: absolute; top: 0; width: 100%; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+        .hero { position: relative; height: 100vh; width: 100%; background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('banner.jpg'); background-size: cover; background-position: center; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 20px; }
+        header { position: absolute; top: 0; width: 100%; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; }
         .logo { font-size: 24px; letter-spacing: 3px; font-weight: 300; text-transform: uppercase; }
-
-        /* --- Naya Menu Style --- */
-        .menu-overlay {
-            position: fixed; top: 0; right: -100%; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); z-index: 99; display: flex;
-            flex-direction: column; align-items: center; justify-content: center;
-            transition: 0.5s;
-        }
-        .menu-overlay.open { right: 0; }
-        .menu-overlay a {
-            color: white; font-size: 30px; text-decoration: none; margin: 15px;
-            text-transform: uppercase; letter-spacing: 2px; transition: 0.3s;
-        }
-        .menu-overlay a:hover { color: #c5a47e; }
-
-        .menu-icon { cursor: pointer; z-index: 101; }
-        .menu-line { width: 25px; height: 2px; background-color: white; margin: 5px 0; transition: 0.3s; }
-
-        .sub-heading { font-family: Arial; font-size: 14px; letter-spacing: 6px; text-transform: uppercase; color: #c5a47e; margin-bottom: 20px; }
+        .menu-icon { cursor: pointer; z-index: 1001; }
+        .menu-line { width: 25px; height: 2px; background-color: white; margin: 5px 0; }
+        .sub-heading { font-family: Arial, sans-serif; font-size: 14px; letter-spacing: 6px; text-transform: uppercase; color: #c5a47e; margin-bottom: 20px; }
         .main-title { font-size: clamp(40px, 8vw, 75px); line-height: 1.1; max-width: 800px; margin-bottom: 30px; }
-        .description { font-family: Arial; font-size: 18px; line-height: 1.6; max-width: 600px; color: #e0e0e0; margin-bottom: 40px; font-weight: 300; }
-
-        /* WhatsApp Button Hover Animation */
-        .cta-button, .quote-btn, .workshop-btn {
-            background-color: #c5a47e; color: black; padding: 18px 40px;
-            text-decoration: none; font-family: Arial; font-size: 14px;
-            font-weight: bold; letter-spacing: 2px; text-transform: uppercase;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            display: inline-block; margin-bottom: 15px; width: 100%; max-width: 400px;
-        }
-        .cta-button:hover, .quote-btn:hover { background-color: white; transform: translateY(-5px); }
-
-        .secondary-button {
-            background-color: transparent; border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white; padding: 15px 40px; text-decoration: none;
-            font-family: Arial; font-size: 14px; letter-spacing: 2px;
-            text-transform: uppercase; width: 100%; max-width: 400px; transition: 0.3s;
-            display: inline-block;
-        }
-
+        .description { font-family: Arial, sans-serif; font-size: 18px; line-height: 1.6; max-width: 600px; color: #e0e0e0; margin-bottom: 40px; font-weight: 300; }
+        .cta-button { background-color: #c5a47e; color: black; padding: 18px 40px; text-decoration: none; font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s ease; width: 100%; max-width: 400px; margin-bottom: 15px; display: inline-block; }
+        .cta-button:hover { background-color: #b3936d; transform: translateY(-5px); }
+        .secondary-button { background-color: transparent; border: 1px solid rgba(255, 255, 255, 0.3); color: white; padding: 15px 40px; text-decoration: none; font-family: Arial, sans-serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; width: 100%; max-width: 400px; transition: 0.3s; display: inline-block; }
         .expertise-section { padding: 80px 20px; text-align: center; background-color: #000; color: white; }
         .expertise-header { font-size: 45px; margin-bottom: 15px; font-weight: 400; }
         .underline { width: 80px; height: 1px; background-color: #c5a47e; margin: 0 auto 50px auto; }
         .expertise-container { max-width: 600px; margin: 0 auto; text-align: left; }
         .expertise-img { width: 100%; height: 400px; object-fit: cover; display: block; margin-bottom: 30px; }
-        .explore-link { font-family: Arial; color: #c5a47e; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold; }
-
-        .atelier-section { padding: 100px 20px; background-color: #0b0b0b; color: white; display: flex; justify-content: center; }
+        .explore-link { font-family: Arial, sans-serif; color: #c5a47e; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; font-weight: bold; display: inline-block; margin-bottom: 60px; }
+        .atelier-section { padding: 100px 20px; background-color: #0b0b0b; color: white; text-align: left; display: flex; justify-content: center; }
         .atelier-content { max-width: 700px; width: 100%; }
-        .features-list { list-style: none; margin-top: 40px; }
-        .feature-item { display: flex; align-items: flex-start; margin-bottom: 25px; font-family: Arial; color: #b3b3b3; }
+        .atelier-header { font-size: clamp(30px, 7vw, 55px); line-height: 1.2; margin-bottom: 50px; font-weight: 400; }
+        .atelier-paragraph { font-family: Arial, sans-serif; font-size: 18px; line-height: 1.8; color: #b3b3b3; font-weight: 300; }
+        .feature-item { display: flex; align-items: flex-start; margin-bottom: 25px; font-family: Arial, sans-serif; font-size: 18px; color: #b3b3b3; }
         .check-icon { color: #c5a47e; margin-right: 15px; border: 1px solid #c5a47e; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-
+        .workshop-btn { display: inline-block; border: 1px solid #333; color: white; padding: 20px 40px; text-decoration: none; text-transform: uppercase; font-family: Arial, sans-serif; font-size: 14px; letter-spacing: 2px; margin-top: 30px; transition: 0.3s; }
         .bottom-gallery { background-color: #000; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; gap: 40px; }
-        .bottom-gallery img { max-width: 550px; width: 100%; height: 350px; object-fit: cover; border: 1px solid #222; }
-
+        .bottom-gallery img { max-width: 550px; width: 100%; height: 350px; object-fit: cover; display: block; border: 1px solid #222; }
         .transform-section { padding: 100px 20px; background-color: #000; text-align: center; color: white; }
+        .quote-btn { background-color: #c5a47e; color: black; padding: 20px 40px; text-decoration: none; font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: inline-block; transition: 0.3s; }
+        /* AAPKA ORIGINAL STYLE END */
+
+        /* NAYI ANIMATION AUR OVERLAY CSS */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .overlay { height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; left: 0; background-color: rgba(0,0,0, 0.95); overflow-x: hidden; transition: 0.5s; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .overlay a { padding: 8px; text-decoration: none; font-size: 36px; color: #818181; display: block; transition: 0.3s; text-transform: uppercase; letter-spacing: 3px; }
+        .overlay a:hover { color: #c5a47e; }
+        .closebtn { position: absolute; top: 20px; right: 45px; font-size: 60px !important; }
     </style>
 </head>
 <body>
 
-    <div class="menu-overlay" id="menuOverlay">
-        <a href="kitchen.html" onclick="toggleMenu()">Kitchen</a>
-        <a href="wardrobe.html" onclick="toggleMenu()">Wardrobe</a>
-        <a href="mediawall.html" onclick="toggleMenu()">Media Walls</a>
-        <a href="https://wa.me/923187196942" onclick="toggleMenu()">Contact Us</a>
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="kitchen.html">Kitchen</a>
+        <a href="wardrobe.html">Wardrobe</a>
+        <a href="mediawall.html">Media Wall</a>
+        <a href="https://wa.me/923187196942">Contact Us</a>
     </div>
 
     <div class="hero">
         <header>
             <div class="logo">MZ WOOD WORKS</div>
-            <div class="menu-icon" onclick="toggleMenu()">
+            <div class="menu-icon" onclick="openNav()">
                 <div class="menu-line"></div>
                 <div class="menu-line"></div>
                 <div class="menu-line"></div>
@@ -105,35 +72,35 @@
             <div class="sub-heading">Master Craftsmanship</div>
             <h1 class="main-title">Furniture that outlasts trends.</h1>
             <p class="description">Hand-built bespoke kitchens, wardrobes, and media walls.</p>
-            <a href="https://wa.me/923187196942" class="cta-button">Whatsapp Contact</a>
-            <a href="#expertise" class="secondary-button">View Our Work</a>
+            <a href="https://wa.me/923187196942" class="cta-button">Book on WhatsApp</a>
+            <a href="kitchen.html" class="secondary-button">View Our Work</a>
         </div>
     </div>
 
-    <section class="expertise-section" id="expertise">
+    <section class="expertise-section">
         <h2 class="expertise-header reveal">Our Expertise</h2>
-        <div class="underline"></div>
+        <div class="underline reveal"></div>
 
         <div class="expertise-container">
             <div class="expertise-card reveal">
-                <img src="banner2.jpg" alt="Kitchen" class="expertise-img">
+                <img src="banner2.jpg" class="expertise-img">
                 <h3>Bespoke Kitchens</h3>
                 <p>The heart of the home, crafted without compromise.</p>
-                <a href="kitchen.html" class="explore-link">EXPLORE KITCHENS &rarr;</a>
+                <a href="kitchen.html" class="explore-link">EXPLORE &rarr;</a>
             </div>
 
-            <div class="expertise-card reveal" style="margin-top:50px;">
-                <img src="wardrobe.jpg" alt="Wardrobes" class="expertise-img">
+            <div class="expertise-card reveal">
+                <img src="wardrobe.jpg" class="expertise-img">
                 <h3>Luxury Wardrobes</h3>
                 <p>Walk-in and sliding systems designed around your life.</p>
-                <a href="wardrobe.html" class="explore-link">EXPLORE WARDROBES &rarr;</a>
+                <a href="wardrobe.html" class="explore-link">EXPLORE &rarr;</a>
             </div>
 
-            <div class="expertise-card reveal" style="margin-top:50px;">
-                <img src="mediawall.jpg" alt="Media Walls" class="expertise-img">
+            <div class="expertise-card reveal">
+                <img src="mediawall.jpg" class="expertise-img">
                 <h3>Media Walls</h3>
-                <p>Architectural focal points that hide the clutter.</p>
-                <a href="mediawall.html" class="explore-link">EXPLORE MEDIA WALLS &rarr;</a>
+                <p>Architectural focal points that elevate the space.</p>
+                <a href="mediawall.html" class="explore-link">EXPLORE &rarr;</a>
             </div>
         </div>
     </section>
@@ -142,40 +109,25 @@
         <div class="atelier-content">
             <h2 class="atelier-header">Not a furniture store. <br> An atelier.</h2>
             <p class="atelier-paragraph">We work with discerning homeowners who demand perfection.</p>
-            <ul class="features-list">
-                <li class="feature-item"><span class="check-icon">✓</span> 3D architectural renders</li>
-                <li class="feature-item"><span class="check-icon">✓</span> Sustainable timbers</li>
-            </ul>
-            <a href="https://wa.me/923187196942" class="workshop-btn">Talk to Craftsman</a>
+            <a href="https://wa.me/923187196942" class="workshop-btn">Connect on WhatsApp</a>
         </div>
-    </section>
-
-    <section class="bottom-gallery">
-        <img src="banner2.jpg" class="reveal">
-        <img src="wardrobe.jpg" class="reveal">
-        <img src="mediawall.jpg" class="reveal">
     </section>
 
     <section class="transform-section reveal">
         <h2 class="transform-title">Ready to transform your space?</h2>
-        <a href="https://wa.me/923187196942" class="quote-btn">Whatsapp Me Now</a>
+        <a href="https://wa.me/923187196942" class="quote-btn">Request a Custom Quote</a>
     </section>
 
     <script>
-        // Menu Toggle
-        function toggleMenu() {
-            document.getElementById('menuOverlay').classList.toggle('open');
-        }
+        function openNav() { document.getElementById("myNav").style.width = "100%"; }
+        function closeNav() { document.getElementById("myNav").style.width = "0%"; }
 
-        // Scroll Animation
         window.addEventListener('scroll', () => {
             const reveals = document.querySelectorAll('.reveal');
             reveals.forEach(el => {
-                let windowHeight = window.innerHeight;
-                let revealTop = el.getBoundingClientRect().top;
-                if (revealTop < windowHeight - 100) {
-                    el.classList.add('active');
-                }
+                const windowHeight = window.innerHeight;
+                const revealTop = el.getBoundingClientRect().top;
+                if (revealTop < windowHeight - 100) { el.classList.add('active'); }
             });
         });
     </script>
