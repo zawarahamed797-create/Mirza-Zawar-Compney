@@ -283,10 +283,52 @@
         .bottom-gallery img {
             max-width: 550px; 
             width: 100%;
-            height: 350px; /* Height ko kam kar diya gaya hai */
-            object-fit: cover; /* Image stretch na ho isliye */
+            height: 350px; 
+            object-fit: cover; 
             display: block;
             border: 1px solid #222;
+        }
+
+        /* Transform Your Space Section */
+        .transform-section {
+            padding: 100px 20px;
+            background-color: #000;
+            text-align: center;
+            color: white;
+        }
+
+        .transform-title {
+            font-size: clamp(35px, 6vw, 60px);
+            margin-bottom: 30px;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .transform-desc {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            color: #b3b3b3;
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+            line-height: 1.6;
+        }
+
+        .quote-btn {
+            background-color: #c5a47e;
+            color: black;
+            padding: 20px 40px;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .quote-btn:hover {
+            background-color: #b3936d;
         }
         /* ----- IMAGE SE NAYA CODE END ----- */
 
@@ -385,6 +427,12 @@
         <img src="banner2.jpg" alt="Kitchen Image">
         <img src="wardrobe.jpg" alt="Wardrobe Image">
         <img src="mediawall.jpg" alt="Media Wall Image">
+    </section>
+
+    <section class="transform-section">
+        <h2 class="transform-title">Ready to <br> transform <br> your space?</h2>
+        <p class="transform-desc">Let's discuss your vision. Every great project starts with a simple conversation.</p>
+        <a href="#" class="quote-btn">Request a Custom Quote</a>
     </section>
 
 </body>
