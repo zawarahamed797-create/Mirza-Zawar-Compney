@@ -222,6 +222,55 @@
             color: #b3b3b3; /* Softer text color */
             font-weight: 300;
         }
+
+        /* ----- IMAGE SE NAYA CODE START ----- */
+        .features-list {
+            list-style: none;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            color: #b3b3b3;
+        }
+
+        .check-icon {
+            color: #c5a47e;
+            margin-right: 15px;
+            font-size: 20px;
+            flex-shrink: 0;
+            border: 1px solid #c5a47e;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .workshop-btn {
+            display: inline-block;
+            border: 1px solid #333;
+            color: white;
+            padding: 20px 40px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-top: 30px;
+            transition: 0.3s;
+        }
+
+        .workshop-btn:hover {
+            border-color: #c5a47e;
+        }
+        /* ----- IMAGE SE NAYA CODE END ----- */
+
     </style>
 </head>
 <body>
@@ -289,6 +338,27 @@
             <p class="atelier-paragraph">
                 We don't pull boxes from a warehouse. Every piece is drafted, modeled, cut, and finished specifically for your space. We work with discerning homeowners and interior designers who demand perfection.
             </p>
+
+            <ul class="features-list">
+                <li class="feature-item">
+                    <span class="check-icon">✓</span>
+                    3D architectural renders before any cut is made
+                </li>
+                <li class="feature-item">
+                    <span class="check-icon">✓</span>
+                    Premium sustainable timbers and veneers
+                </li>
+                <li class="feature-item">
+                    <span class="check-icon">✓</span>
+                    Meticulous installation by the craftsmen who built it
+                </li>
+                <li class="feature-item">
+                    <span class="check-icon">✓</span>
+                    Designed to outlast trends and seasons
+                </li>
+            </ul>
+
+            <a href="#" class="workshop-btn">Inside the Workshop</a>
         </div>
     </section>
 
