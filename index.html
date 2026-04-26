@@ -5,435 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MZ Wood Works | Master Craftsmanship</title>
     <style>
-        /* Reset basic styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Times New Roman', Times, serif;
-        }
+        /* Reset and Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Times New Roman', Times, serif; scroll-behavior: smooth; }
+        body, html { height: 100%; background-color: #000; color: white; overflow-x: hidden; }
 
-        body, html {
-            height: 100%;
-            background-color: #000;
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+        .animate { animation: fadeInUp 1s ease forwards; opacity: 0; }
 
-        /* Main Hero Section */
-        .hero {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                        url('banner.jpg'); /* Ensure this file exists */
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 0 20px;
+        /* Header & Nav */
+        header { position: absolute; top: 0; width: 100%; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+        .logo { font-size: 24px; letter-spacing: 3px; font-weight: 300; text-transform: uppercase; }
+        
+        /* Menu Button with Links */
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-family: Arial; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav-links a:hover { color: #c5a47e; }
+
+        /* Hero Section */
+        .hero { 
+            height: 100vh; width: 100%; 
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('banner.jpg') center/cover;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 20px;
         }
-
-        header {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            padding: 30px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .sub-heading { font-family: Arial; font-size: 14px; letter-spacing: 6px; text-transform: uppercase; color: #c5a47e; margin-bottom: 20px; }
+        .main-title { font-size: clamp(40px, 8vw, 75px); line-height: 1.1; max-width: 800px; margin-bottom: 30px; }
+        
+        /* Buttons */
+        .cta-button, .quote-btn { 
+            background-color: #c5a47e; color: black; padding: 18px 40px; text-decoration: none; 
+            font-family: Arial; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; 
+            transition: 0.4s; display: inline-block; margin: 10px; border: none; cursor: pointer;
         }
+        .cta-button:hover, .quote-btn:hover { background-color: white; transform: scale(1.05); }
 
-        .logo {
-            font-size: 24px;
-            letter-spacing: 3px;
-            font-weight: 300;
-            text-transform: uppercase;
+        .secondary-button { 
+            background-color: transparent; border: 1px solid rgba(255, 255, 255, 0.3); color: white; 
+            padding: 15px 40px; text-decoration: none; font-family: Arial; text-transform: uppercase; 
+            transition: 0.4s; display: inline-block;
         }
+        .secondary-button:hover { border-color: #c5a47e; background: rgba(197, 164, 126, 0.1); }
 
-        .menu-icon {
-            cursor: pointer;
-        }
+        /* Expertise Section */
+        .expertise-section { padding: 80px 20px; text-align: center; }
+        .expertise-header { font-size: 45px; margin-bottom: 15px; }
+        .underline { width: 80px; height: 1px; background-color: #c5a47e; margin: 0 auto 50px auto; }
+        .expertise-container { max-width: 600px; margin: 0 auto; text-align: left; }
+        .expertise-card { margin-bottom: 60px; }
+        .expertise-img { width: 100%; height: 400px; object-fit: cover; margin-bottom: 30px; transition: 0.5s; }
+        .expertise-card:hover .expertise-img { transform: scale(1.02); }
+        .explore-link { color: #c5a47e; text-decoration: none; font-family: Arial; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
 
-        .menu-line {
-            width: 25px;
-            height: 2px;
-            background-color: white;
-            margin: 5px 0;
-        }
-
-        .sub-heading {
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: #c5a47e;
-            margin-bottom: 20px;
-        }
-
-        .main-title {
-            font-size: clamp(40px, 8vw, 75px);
-            line-height: 1.1;
-            max-width: 800px;
-            margin-bottom: 30px;
-        }
-
-        .description {
-            font-family: Arial, sans-serif;
-            font-size: 18px;
-            line-height: 1.6;
-            max-width: 600px;
-            color: #e0e0e0;
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-
-        .cta-button {
-            background-color: #c5a47e;
-            color: black;
-            padding: 18px 40px;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: 0.3s ease;
-            width: 100%;
-            max-width: 400px;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-
-        .cta-button:hover {
-            background-color: #b3936d;
-        }
-
-        .secondary-button {
-            background-color: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 15px 40px;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            width: 100%;
-            max-width: 400px;
-            transition: 0.3s;
-            display: inline-block;
-        }
-
-        .secondary-button:hover {
-            border-color: white;
-        }
-
-        /* Naya Section: Our Expertise */
-        .expertise-section {
-            padding: 80px 20px;
-            text-align: center;
-            background-color: #000;
-            color: white;
-        }
-
-        .expertise-header {
-            font-size: 45px;
-            margin-bottom: 15px;
-            font-weight: 400;
-        }
-
-        .underline {
-            width: 80px;
-            height: 1px;
-            background-color: #c5a47e;
-            margin: 0 auto 50px auto;
-        }
-
-        .expertise-container {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        .expertise-img {
-            width: 100%;
-            height: 400px; 
-            object-fit: cover; 
-            display: block;
-            margin-bottom: 30px;
-        }
-
-        .expertise-card h3 {
-            font-size: 28px;
-            margin-bottom: 15px;
-            font-weight: 400;
-        }
-
-        .expertise-card p {
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            line-height: 1.8;
-            color: #999;
-            font-weight: 300;
-            margin-bottom: 20px;
-        }
-
-        .explore-link {
-            font-family: Arial, sans-serif;
-            color: #c5a47e;
-            text-decoration: none;
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 60px; /* Space before next card */
-        }
-
-        /* ----- NAYE SECTION KE LIYE CSS (An Atelier) ----- */
-        .atelier-section {
-            padding: 100px 20px;
-            background-color: #0b0b0b; /* Dark subtle background for Atelier section */
-            color: white;
-            text-align: left;
-            display: flex;
-            justify-content: center;
-        }
-
-        .atelier-content {
-            max-width: 700px; /* Limits width like in the image */
-            width: 100%;
-        }
-
-        .atelier-header {
-            font-size: clamp(30px, 7vw, 55px); /* Responsive large font */
-            line-height: 1.2;
-            margin-bottom: 50px;
-            font-weight: 400;
-        }
-
-        .atelier-paragraph {
-            font-family: Arial, sans-serif;
-            font-size: 18px;
-            line-height: 1.8;
-            color: #b3b3b3; /* Softer text color */
-            font-weight: 300;
-        }
-
-        /* ----- IMAGE SE NAYA CODE START ----- */
-        .features-list {
-            list-style: none;
-            margin-top: 40px;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-            font-family: Arial, sans-serif;
-            font-size: 18px;
-            color: #b3b3b3;
-        }
-
-        .check-icon {
-            color: #c5a47e;
-            margin-right: 15px;
-            font-size: 20px;
-            flex-shrink: 0;
-            border: 1px solid #c5a47e;
-            border-radius: 50%;
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .workshop-btn {
-            display: inline-block;
-            border: 1px solid #333;
-            color: white;
-            padding: 20px 40px;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            letter-spacing: 2px;
-            margin-top: 30px;
-            transition: 0.3s;
-        }
-
-        .workshop-btn:hover {
-            border-color: #c5a47e;
-        }
-
-        /* Naya Bottom Gallery Section CSS */
-        .bottom-gallery {
-            background-color: #000;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 40px; /* Space between images */
-        }
-
-        .bottom-gallery img {
-            max-width: 550px; 
-            width: 100%;
-            height: 350px; 
-            object-fit: cover; 
-            display: block;
-            border: 1px solid #222;
-        }
-
-        /* Transform Your Space Section */
-        .transform-section {
-            padding: 100px 20px;
-            background-color: #000;
-            text-align: center;
-            color: white;
-        }
-
-        .transform-title {
-            font-size: clamp(35px, 6vw, 60px);
-            margin-bottom: 30px;
-            font-weight: 400;
-            line-height: 1.2;
-        }
-
-        .transform-desc {
-            font-family: Arial, sans-serif;
-            font-size: 18px;
-            color: #b3b3b3;
-            max-width: 600px;
-            margin: 0 auto 50px auto;
-            line-height: 1.6;
-        }
-
-        .quote-btn {
-            background-color: #c5a47e;
-            color: black;
-            padding: 20px 40px;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            display: inline-block;
-            transition: 0.3s;
-        }
-
-        .quote-btn:hover {
-            background-color: #b3936d;
-        }
-        /* ----- IMAGE SE NAYA CODE END ----- */
-
+        /* Atelier Section */
+        .atelier-section { padding: 100px 20px; background-color: #0b0b0b; display: flex; justify-content: center; }
+        .atelier-content { max-width: 700px; }
+        .features-list { list-style: none; margin: 40px 0; }
+        .feature-item { display: flex; align-items: center; margin-bottom: 20px; color: #b3b3b3; font-family: Arial; }
+        .check-icon { color: #c5a47e; margin-right: 15px; border: 1px solid #c5a47e; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <header>
-            <div class="logo">MZ WOOD WORKS</div>
-            <div class="menu-icon">
-                <div class="menu-line"></div>
-                <div class="menu-line"></div>
-                <div class="menu-line"></div>
-            </div>
-        </header>
+    <header>
+        <div class="logo">MZ WOOD WORKS</div>
+        <nav class="nav-links">
+            <a href="kitchen.html">Kitchen</a>
+            <a href="wardrobe.html">Wardrobe</a>
+            <a href="mediawall.html">Media Wall</a>
+            <a href="https://wa.me/YOUR_NUMBER" target="_blank">Contact</a>
+        </nav>
+    </header>
 
-        <div class="sub-heading">Master Craftsmanship</div>
-        <h1 class="main-title">Furniture that outlasts trends.</h1>
-        <p class="description">
-            Hand-built bespoke kitchens, wardrobes, and media walls. 
-            Designed with precision, crafted with soul.
-        </p>
-        <a href="#" class="cta-button">Book a Consultation</a>
-        <a href="#" class="secondary-button">View Our Work</a>
+    <div class="hero">
+        <div class="animate" style="animation-delay: 0.2s;">
+            <div class="sub-heading">Master Craftsmanship</div>
+            <h1 class="main-title">Furniture that outlasts trends.</h1>
+            <a href="https://wa.me/03187196942" class="cta-button">Connect on WhatsApp</a>
+            <a href="#work" class="secondary-button">View Our Work</a>
+        </div>
     </div>
 
-    <section class="expertise-section">
-        <h2 class="expertise-header">Our Expertise</h2>
-        <div class="underline"></div>
+    <section id="work" class="expertise-section">
+        <h2 class="expertise-header animate">Our Expertise</h2>
+        <div class="underline animate"></div>
 
         <div class="expertise-container">
-            <div class="expertise-card">
-                <img src="banner2.jpg" alt="Bespoke Kitchen" class="expertise-img">
+            <div class="expertise-card animate">
+                <img src="banner2.jpg" class="expertise-img">
                 <h3>Bespoke Kitchens</h3>
-                <p>
-                    The heart of the home, crafted without compromise. 
-                    From timeless shakers to minimalist modern spaces.
-                </p>
-                <a href="#" class="explore-link">EXPLORE &rarr;</a>
+                <a href="kitchen.html" class="explore-link">EXPLORE KITCHENS &rarr;</a>
             </div>
 
-            <div class="expertise-card">
-                <img src="wardrobe.jpg" alt="Luxury Wardrobes" class="expertise-img">
+            <div class="expertise-card animate">
+                <img src="wardrobe.jpg" class="expertise-img">
                 <h3>Luxury Wardrobes</h3>
-                <p>
-                    Walk-in and sliding systems designed around your life. 
-                    Impeccable finishes, integrated lighting.
-                </p>
-                <a href="#" class="explore-link">EXPLORE &rarr;</a>
+                <a href="wardrobe.html" class="explore-link">EXPLORE WARDROBES &rarr;</a>
             </div>
 
-            <div class="expertise-card">
-                <img src="mediawall.jpg" alt="Media Walls" class="expertise-img">
+            <div class="expertise-card animate">
+                <img src="mediawall.jpg" class="expertise-img">
                 <h3>Media Walls</h3>
-                <p>
-                    Architectural focal points that hide the clutter and elevate the space. 
-                    Custom acoustics and storage.
-                </p>
-                <a href="#" class="explore-link">EXPLORE &rarr;</a>
+                <a href="mediawall.html" class="explore-link">EXPLORE MEDIA WALLS &rarr;</a>
             </div>
         </div>
     </section>
 
-    <section class="atelier-section">
-        <div class="atelier-content">
-            <h2 class="atelier-header">Not a furniture store. <br> An atelier.</h2>
-            <p class="atelier-paragraph">
-                We don't pull boxes from a warehouse. Every piece is drafted, modeled, cut, and finished specifically for your space. We work with discerning homeowners and interior designers who demand perfection.
-            </p>
-
-            <ul class="features-list">
-                <li class="feature-item">
-                    <span class="check-icon">✓</span>
-                    3D architectural renders before any cut is made
-                </li>
-                <li class="feature-item">
-                    <span class="check-icon">✓</span>
-                    Premium sustainable timbers and veneers
-                </li>
-                <li class="feature-item">
-                    <span class="check-icon">✓</span>
-                    Meticulous installation by the craftsmen who built it
-                </li>
-                <li class="feature-item">
-                    <span class="check-icon">✓</span>
-                    Designed to outlast trends and seasons
-                </li>
-            </ul>
-
-            <a href="#" class="workshop-btn">Inside the Workshop</a>
-        </div>
+    <section class="transform-section" style="padding: 100px 20px; text-align: center;">
+        <h2 class="main-title animate">Ready to transform your space?</h2>
+        <a href="https://wa.me/YOUR_NUMBER" class="quote-btn animate">Contact on WhatsApp</a>
     </section>
 
-    <section class="bottom-gallery">
-        <img src="banner2.jpg" alt="Kitchen Image">
-        <img src="wardrobe.jpg" alt="Wardrobe Image">
-        <img src="mediawall.jpg" alt="Media Wall Image">
-    </section>
+    <script>
+        // Simple Scroll Animation Trigger
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('animate');
+            });
+        }, { threshold: 0.1 });
 
-    <section class="transform-section">
-        <h2 class="transform-title">Ready to <br> transform <br> your space?</h2>
-        <p class="transform-desc">Let's discuss your vision. Every great project starts with a simple conversation.</p>
-        <a href="#" class="quote-btn">Request a Custom Quote</a>
-    </section>
-
+        document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
