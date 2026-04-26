@@ -4,21 +4,20 @@
     <meta charset="UTF-8">
     <title>Luxury Wardrobes | MZ Wood Works</title>
     <style>
-        body { background: #000; color: white; font-family: 'Times New Roman'; text-align: center; padding: 50px 20px; }
-        h1 { color: #c5a47e; margin-bottom: 40px; font-size: 40px; }
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
-        img { width: 100%; height: 400px; object-fit: cover; border: 1px solid #333; }
-        .btn { display: inline-block; margin-top: 50px; color: #c5a47e; text-decoration: none; border: 1px solid #c5a47e; padding: 15px 30px; text-transform: uppercase; }
+        body { background: #000; color: white; font-family: Arial; text-align: center; padding: 50px 20px; }
+        h1 { color: #c5a47e; margin-bottom: 30px; }
+        .gallery { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+        img, video { width: 100%; max-width: 800px; border: 1px solid #c5a47e; }
+        .back { color: #c5a47e; text-decoration: none; margin-bottom: 20px; display: inline-block; }
     </style>
 </head>
 <body>
-    <a href="index.html" style="color:white; text-decoration:none;">&larr; Back to Home</a>
-    <h1>Luxury Wardrobes</h1>
+    <a href="index.html" class="back">&larr; Back to Home</a>
+    <h1>Wardrobe Designs</h1>
     <div class="gallery">
-        <img src="wardrobe1.jpg">
-        <img src="wardrobe2.jpg">
+        <img src="wardrobe1.jpg" alt="Wardrobe 1">
+        <img src="wardrobe2.jpg" alt="Wardrobe 2">
+        <video controls> <source src="wardrobe-video.mp4" type="video/mp4"> </video>
     </div>
-    <a href="https://wa.me/923187196942" class="btn">Design My Wardrobe</a>
 </body>
 </html>
-
